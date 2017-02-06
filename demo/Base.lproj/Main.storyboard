@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,6 +36,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bFl-tu-xg0">
+                                <rect key="frame" x="142" y="155" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" name="shadowColor" catalog="System" colorSpace="catalog"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -47,6 +53,7 @@
                     <navigationItem key="navigationItem" id="mbe-h7-xVB"/>
                     <connections>
                         <outlet property="myTableView" destination="Lhk-h3-yX6" id="3wu-EL-xeK"/>
+                        <outlet property="spinner" destination="bFl-tu-xg0" id="50O-CA-Gsf"/>
                         <segue destination="fpQ-yd-zP3" kind="show" id="vOc-vS-0EE"/>
                     </connections>
                 </viewController>
@@ -66,16 +73,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DetailInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDL-Lz-oKe">
-                                <rect key="frame" x="124" y="274" width="73" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xFi-2c-SFh">
+                                <rect key="frame" x="135" y="266" width="37" height="37"/>
+                                <color key="color" name="shadowColor" catalog="System" colorSpace="catalog"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DetailInfo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDL-Lz-oKe">
+                                <rect key="frame" x="16" y="72" width="288" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-Nf-cOy">
+                                <rect key="frame" x="16" y="118" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ggd-Gv-Oip">
+                                <rect key="frame" x="16" y="147" width="288" height="413"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ggd-Gv-Oip" firstAttribute="trailing" secondItem="3db-iQ-NGp" secondAttribute="trailingMargin" id="4d4-5F-hS0"/>
+                            <constraint firstItem="xFi-2c-SFh" firstAttribute="centerY" secondItem="3db-iQ-NGp" secondAttribute="centerY" id="6KA-1F-f4h"/>
+                            <constraint firstItem="HDL-Lz-oKe" firstAttribute="trailing" secondItem="3db-iQ-NGp" secondAttribute="trailingMargin" id="8hD-yV-mcd"/>
+                            <constraint firstItem="ggd-Gv-Oip" firstAttribute="top" secondItem="lKh-Nf-cOy" secondAttribute="bottom" constant="8" id="QF8-CL-CC2"/>
+                            <constraint firstItem="lKh-Nf-cOy" firstAttribute="trailing" secondItem="3db-iQ-NGp" secondAttribute="trailingMargin" id="TRG-Dt-Qr3"/>
+                            <constraint firstItem="HDL-Lz-oKe" firstAttribute="top" secondItem="4JH-1G-KKv" secondAttribute="bottom" constant="8" id="Wcp-M2-s2o"/>
+                            <constraint firstItem="HDL-Lz-oKe" firstAttribute="leading" secondItem="3db-iQ-NGp" secondAttribute="leadingMargin" id="eLp-ZR-qep"/>
+                            <constraint firstItem="lKh-Nf-cOy" firstAttribute="top" secondItem="HDL-Lz-oKe" secondAttribute="bottom" constant="8" symbolic="YES" id="hba-j1-HKI"/>
+                            <constraint firstItem="xFi-2c-SFh" firstAttribute="leading" secondItem="3db-iQ-NGp" secondAttribute="leading" constant="135" id="l31-ip-Lqc"/>
+                            <constraint firstItem="lKh-Nf-cOy" firstAttribute="centerX" secondItem="HDL-Lz-oKe" secondAttribute="centerX" id="lwz-Qf-WdU"/>
+                            <constraint firstItem="lKh-Nf-cOy" firstAttribute="leading" secondItem="3db-iQ-NGp" secondAttribute="leadingMargin" id="raG-5h-cQh"/>
+                            <constraint firstItem="lKh-Nf-cOy" firstAttribute="top" secondItem="3db-iQ-NGp" secondAttribute="top" constant="118" id="t3g-Nq-K2j"/>
+                            <constraint firstItem="ggd-Gv-Oip" firstAttribute="leading" secondItem="3db-iQ-NGp" secondAttribute="leadingMargin" id="xNp-JT-Tdx"/>
+                            <constraint firstItem="4ZT-Va-bwP" firstAttribute="top" secondItem="ggd-Gv-Oip" secondAttribute="bottom" constant="8" id="z6S-rZ-1SW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="lKh-Nf-cOy" id="iHs-ui-aus"/>
+                        <outlet property="itemImage" destination="ggd-Gv-Oip" id="KbP-hI-acZ"/>
+                        <outlet property="itemLabel" destination="HDL-Lz-oKe" id="5R8-UI-wGb"/>
+                        <outlet property="spinner" destination="xFi-2c-SFh" id="NEd-Im-mcH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBt-RE-TyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 var items = [Item]()
 
@@ -37,12 +38,18 @@ class ViewController: UIViewController,
         */
  
         //self.getItems();
-        //spinner.startAnimating()
+        spinner.startAnimating()
         
-        self.loadItemsFromApi()
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will appear")
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
+        self.loadItemsFromApi()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -67,16 +74,26 @@ class ViewController: UIViewController,
         self.present(controller!, animated: true, completion: nil)
         */
         
-        let controller = self.storyboard?.instantiateViewController(withIdentifier: "details")
-        self.navigationController?.pushViewController(controller!, animated: true)
+        let controller: SingleItemViewController = self.storyboard?.instantiateViewController(withIdentifier: "details") as! SingleItemViewController
+        let itemAtRow = items[indexPath.row]
+        
+        controller.item = itemAtRow
+        
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     
     func loadItemsFromApi() {
+        items = [Item]();
+        
+        print("loadIitems")
+        
         //let url = URL(string: "https://reqres.in/api/users")!;
         let url = URL(string: DataAPI.restUrl)!
-        var req = URLRequest(url: url);
-        req.cachePolicy = .reloadRevalidatingCacheData;
+        //var req = URLRequest(url: url);
+        //req.cachePolicy = .reloadRevalidatingCacheData;
+        // forcing fresh request
+        //req.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         let session = URLSession.shared;
         //var users = [String]()
         
@@ -96,6 +113,7 @@ class ViewController: UIViewController,
                             let image = single["image"],
                             let desc = single["description"] {
                             item = Item(title:title, image:image, description:desc)
+                            print(items.count)
                         } else {
                             item = Item(title: "error", image: "error", description: "error")
                         }
@@ -105,6 +123,8 @@ class ViewController: UIViewController,
                     }
                     DispatchQueue.main.async {
                         self.myTableView.reloadData()
+                        self.spinner.stopAnimating()
+                        self.spinner.isHidden = true//removeFromSuperview()
                     }
                     /*
                     if let json = jsonObject["data"] as? [String: Any] {
@@ -125,6 +145,7 @@ class ViewController: UIViewController,
                 } catch let error {
                     print("Error \(error)")
                 }
+                print(items.count);
             }
             
         }
