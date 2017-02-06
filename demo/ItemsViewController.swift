@@ -3,7 +3,7 @@ import UIKit
 // items store
 var items = [Item]()
 
-class ViewController: UIViewController,
+class ItemsViewController: UIViewController,
         UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var spinner: UIActivityIndicatorView!
