@@ -41,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1984B9A61E491AAE00E53D5D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19865E9E1E410CB800E29E6D /* Assets.xcassets */,
+				19865EA01E410CB800E29E6D /* LaunchScreen.storyboard */,
+				19865EA31E410CB800E29E6D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		19865E8B1E410CB800E29E6D = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +76,7 @@
 				19865E991E410CB800E29E6D /* ViewController.swift */,
 				19865E9B1E410CB800E29E6D /* Main.storyboard */,
 				1984B9A01E4854A600E53D5D /* SingleItemViewController.swift */,
-				19865E9E1E410CB800E29E6D /* Assets.xcassets */,
-				19865EA01E410CB800E29E6D /* LaunchScreen.storyboard */,
-				19865EA31E410CB800E29E6D /* Info.plist */,
+				1984B9A61E491AAE00E53D5D /* Supporting Files */,
 			);
 			path = demo;
 			sourceTree = "<group>";
