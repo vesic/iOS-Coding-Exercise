@@ -39,7 +39,7 @@ class ItemsViewController: UIViewController,
         let cell = self.myTableView.dequeueReusableCell(withIdentifier: "myCell")
         let item = items[indexPath.row]
         cell?.textLabel?.text = item.title
-        
+        cell?.detailTextLabel?.text = item.description
         return cell!;
         
     }
