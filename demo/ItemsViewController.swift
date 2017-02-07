@@ -1,8 +1,5 @@
 import UIKit
 
-// items store
-//var items = [Item]()
-
 class ItemsViewController: UIViewController,
         UITableViewDataSource, UITableViewDelegate {
   
@@ -59,7 +56,7 @@ class ItemsViewController: UIViewController,
     func loadItemsFromApi() {
         
         // reset items
-        self.items.clearAll()// = [Item]();
+        self.items.clearAll()
         let url = URL(string: DataAPI.restUrl)!
         var req = URLRequest(url: url);
         // cache request
@@ -76,18 +73,7 @@ class ItemsViewController: UIViewController,
                     
                     for single in result {
                         
-                        /*
-                        guard let title = single["title"],
-                                let image = single["image"],
-                                let desc = single["desciption"],
-                            self.item = Item(title:title, image:image, description:desc)
-                            else {
-                                return nil
-                        }*/
-                        //let item:Item
-                        
                         // convert to model
-                        
                         if let title = single["title"],
                             let image = single["image"],
                             let desc = single["description"] {
