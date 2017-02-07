@@ -1,11 +1,13 @@
 import UIKit
 
 // items store
-var items = [Item]()
+//var items = [Item]()
 
 class ItemsViewController: UIViewController,
         UITableViewDataSource, UITableViewDelegate {
-
+  
+    var items = ItemsStore()
+    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var myTableView: UITableView!
     
@@ -30,14 +32,14 @@ class ItemsViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return items.count
+        return self.items.returnAllItems()
     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = self.myTableView.dequeueReusableCell(withIdentifier: "myCell")
-        let item = items[indexPath.row]
+        let item = self.items.returnSingleItem(index: indexPath.row)//[indexPath.row]
         cell?.textLabel?.text = item.title
         cell?.detailTextLabel?.text = item.description
         return cell!;
@@ -47,7 +49,7 @@ class ItemsViewController: UIViewController,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let controller: SingleItemViewController = self.storyboard?.instantiateViewController(withIdentifier: "details") as! SingleItemViewController
-        let itemAtRow = items[indexPath.row]
+        let itemAtRow = self.items.returnSingleItem(index: indexPath.row)//items[indexPath.row]
         controller.item = itemAtRow
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -57,7 +59,7 @@ class ItemsViewController: UIViewController,
     func loadItemsFromApi() {
         
         // reset items
-        items = [Item]();
+        self.items.clearAll()// = [Item]();
         let url = URL(string: DataAPI.restUrl)!
         var req = URLRequest(url: url);
         // cache request
@@ -74,17 +76,28 @@ class ItemsViewController: UIViewController,
                     
                     for single in result {
                         
-                        let item:Item
+                        /*
+                        guard let title = single["title"],
+                                let image = single["image"],
+                                let desc = single["desciption"],
+                            self.item = Item(title:title, image:image, description:desc)
+                            else {
+                                return nil
+                        }*/
+                        //let item:Item
+                        
+                        // convert to model
                         
                         if let title = single["title"],
                             let image = single["image"],
                             let desc = single["description"] {
-                            item = Item(title:title, image:image, description:desc)
-                        } else {
-                            item = Item(title: "error", image: "error", description: "error")
+                            let item = Item(title:title, image:image, description:desc)
+                            self.items.addToItems(item: item)
+                            //items.append(item)
                         }
                         
-                        items.append(item)
+                        //items.append(item)
+                    
                     }
                     // update UI from background
                     DispatchQueue.main.async {

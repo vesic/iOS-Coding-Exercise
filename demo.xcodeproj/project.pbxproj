@@ -10,6 +10,7 @@
 		1984B9A11E4854A600E53D5D /* SingleItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984B9A01E4854A600E53D5D /* SingleItemViewController.swift */; };
 		1984B9A31E485B2F00E53D5D /* DataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984B9A21E485B2F00E53D5D /* DataAPI.swift */; };
 		1984B9A51E4864B600E53D5D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984B9A41E4864B500E53D5D /* Item.swift */; };
+		1984B9A81E49981600E53D5D /* ItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984B9A71E49981600E53D5D /* ItemsStore.swift */; };
 		19865E981E410CB800E29E6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19865E971E410CB800E29E6D /* AppDelegate.swift */; };
 		19865E9A1E410CB800E29E6D /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19865E991E410CB800E29E6D /* ItemsViewController.swift */; };
 		19865E9D1E410CB800E29E6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19865E9B1E410CB800E29E6D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		1984B9A01E4854A600E53D5D /* SingleItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleItemViewController.swift; sourceTree = "<group>"; };
 		1984B9A21E485B2F00E53D5D /* DataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataAPI.swift; path = ../DataAPI.swift; sourceTree = "<group>"; };
 		1984B9A41E4864B500E53D5D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		1984B9A71E49981600E53D5D /* ItemsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsStore.swift; sourceTree = "<group>"; };
 		19865E941E410CB800E29E6D /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19865E971E410CB800E29E6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19865E991E410CB800E29E6D /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		19865E961E410CB800E29E6D /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				1984B9A71E49981600E53D5D /* ItemsStore.swift */,
 				1984B9A21E485B2F00E53D5D /* DataAPI.swift */,
 				1984B9A41E4864B500E53D5D /* Item.swift */,
 				19865E971E410CB800E29E6D /* AppDelegate.swift */,
@@ -155,6 +158,7 @@
 			files = (
 				1984B9A51E4864B600E53D5D /* Item.swift in Sources */,
 				1984B9A31E485B2F00E53D5D /* DataAPI.swift in Sources */,
+				1984B9A81E49981600E53D5D /* ItemsStore.swift in Sources */,
 				1984B9A11E4854A600E53D5D /* SingleItemViewController.swift in Sources */,
 				19865E9A1E410CB800E29E6D /* ItemsViewController.swift in Sources */,
 				19865E981E410CB800E29E6D /* AppDelegate.swift in Sources */,
