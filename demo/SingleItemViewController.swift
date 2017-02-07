@@ -1,7 +1,7 @@
+
 import UIKit
 
 class SingleItemViewController: UIViewController {
-
     // item placeholder
     var item: Item?
     
@@ -11,9 +11,7 @@ class SingleItemViewController: UIViewController {
     @IBOutlet weak var itemImage: UIImageView!
     
     override func viewDidLoad() {
-        
         self.title = "Single Item"
-        
         self.itemLabel.text = item?.title
         self.descriptionLabel.text = item?.description
 
@@ -28,18 +26,14 @@ class SingleItemViewController: UIViewController {
         */
         
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    
         self.spinner.isHidden = false
         self.spinner.startAnimating()
-    
     }
     
     func loadImage() {
-    
         let url = URL(string: (self.item?.image)!)
         let req = URLRequest(url: url!)
         
@@ -51,8 +45,6 @@ class SingleItemViewController: UIViewController {
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
             }
-        }.resume()
-        
+        }.resume() 
     }
-    
 }
