@@ -1,10 +1,11 @@
+
 import UIKit
 
 class ItemsViewController: UIViewController,
         UITableViewDataSource, UITableViewDelegate {
   
     var items = ItemsStore()
-    
+                
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var myTableView: UITableView!
     
@@ -24,13 +25,11 @@ class ItemsViewController: UIViewController,
         self.spinner.isHidden = false
         self.spinner.startAnimating()
         self.loadItemsFromApi()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.items.returnAllItems()
-    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,8 +38,7 @@ class ItemsViewController: UIViewController,
         let item = self.items.returnSingleItem(index: indexPath.row)//[indexPath.row]
         cell?.textLabel?.text = item.title
         cell?.detailTextLabel?.text = item.description
-        return cell!;
-        
+        return cell!; 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -79,12 +77,9 @@ class ItemsViewController: UIViewController,
                             let desc = single["description"] {
                             let item = Item(title:title, image:image, description:desc)
                             self.items.addToItems(item: item)
-                            //items.append(item)
                         }
-                        
-                        //items.append(item)
-                    
                     }
+                        
                     // update UI from background
                     DispatchQueue.main.async {
                         self.myTableView.reloadData()
@@ -99,4 +94,3 @@ class ItemsViewController: UIViewController,
     }
     
 }
-
